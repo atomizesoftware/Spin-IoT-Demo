@@ -1,0 +1,186 @@
+.iot-dashboard-container {
+}
+
+.widgets-container {
+  padding: 20px;
+}
+
+.info-container {
+  padding: 20px 0;
+}
+
+.dashboard-widget {
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+  line-height: 40px;
+  background-color: #FFFFFF;
+  text-align: center;
+  margin: 0 0 20px 0;
+}
+
+.dashboard-widget-label {
+  font-weight: 300;
+  font-size: 20px;
+  margin: 0 0 10px 0;
+}
+
+.big-number {
+  font-size: 40px;
+  font-weight: 300;
+}
+
+
+.last-reading {
+  font-size: 12px;
+}
+
+
+.dashboard-widget .button{
+  padding: 14px;
+  color: #FFFFFF;
+  background-color: #CD1231;
+  border: 0;
+  border-radius: 2px;
+  margin: 10px;
+}
+
+
+.message {
+  background-color: green;
+  color: #FFFFFF;
+  padding: 10px;
+}
+
+.message .link {
+  color: #FFFFFF;
+}
+
+.sendText {
+  padding: 0 10px;
+}
+
+/*Hide footer because it has a CSS bug*/
+#atomize-footer {
+  display: none;
+}
+
+.div-block-info-container {
+  height: auto;
+  border-style: none none none solid;
+  border-width: 1px;
+  border-color: silver;
+  background-color: #ebebeb;
+}
+
+
+.info-details-text {
+  margin-bottom: 0px;
+  padding: 17px 0px;
+  border-top: 1px none silver;
+  background-color: transparent;
+  color: #535353;
+  line-height: 23px;
+  letter-spacing: 2px;
+}
+
+
+.div-block-info-details {
+  padding: 0px 100px 0px 90px;
+  border-top: 1px solid silver;
+  background-color: #fff;
+}
+
+.div-block-solutions {
+  height: auto;
+  background-image: linear-gradient(180deg, rgba(0, 19, 48, .54), rgba(0, 19, 48, .54)), url("images/mountains.png");
+}
+
+.div-block-solutions.iot-form {
+  display: block;
+  height: auto;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 58px;
+  padding-bottom: 72px;
+  text-align: center;
+}
+
+.pod-solutions-text {
+  height: 132px;
+}
+
+.info-details-text {
+  margin-bottom: 0px;
+  padding: 17px 0px;
+  border-top: 1px none silver;
+  background-color: transparent;
+  color: #535353;
+  line-height: 23px;
+  letter-spacing: 2px;
+}
+
+.list {
+  margin: 10px 10px;
+  padding: 20px;
+  color: #757575;
+}
+
+.list ol {
+  margin-left: 50px;
+}
+
+.div-block-info-details {
+  padding: 0px 100px 0px 90px;
+  border-top: 1px solid silver;
+  background-color: #fff;
+}
+
+.spin-developers-button {
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.success-message-button {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 3px;
+  background-color: #ffd605;
+  color: #000;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.pod-solutions-text {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 16px;
+  padding-left: 16px;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 2px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.pod-solutions-text a {
+  color: #FFFFFF;
+}
+
+.div-block-solutions.iot-form.info-details {
+  display: block;
+  height: auto;
+  margin-right: auto;
+  margin-left: auto;
+  padding:20px 20px 40px 20px;
+  text-align: center;
+}
+
+.div-block-solutions.iot-form {
+  height: 527px;
+  margin-top: 0px;
+  padding-top: 160px;
+  background-color: rgba(0, 0, 0, .59);
+}
