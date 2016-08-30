@@ -1,0 +1,19 @@
+{
+  "globalLabels": {
+    "confirm": "Confirm",
+    "next": "Next",
+    "back": "Back",
+    "scan": "Scan",
+    "ok": "OK"
+  },
+  "labels": {
+    "send": "Send",
+    "typeSomething":"Write something and hit Send. The text will appear in the Raspberry Pi LED display."
+  },
+  "errorMessages": {
+    "unexpectedError": "An unexpected error has occurred please contact support (support@atomizesoftware.com)."
+  },
+  "errorLabels": {
+    "title": "Error"
+  }
+}

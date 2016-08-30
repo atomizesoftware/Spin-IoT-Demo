@@ -1,0 +1,377 @@
+*,h1,h2,h3 {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    position: relative;
+    min-height: 100%;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+ul {
+    list-style: none;
+}
+
+.content {
+    position:absolute;
+    top: 0;
+    bottom: 55px;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.fixed-buttons {
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.fixed-buttons .btn {
+    width: 50%;
+    border-radius: 0;
+    float: left;
+    padding: 12px 12px !important;
+    font-size: 16px;
+}
+
+.form-step {
+    border: 0 solid #CCCCCC;
+    padding: 5px;
+    margin: 5px 5px 10px 0;
+}
+
+.form-step.no-margin {
+    margin: 0;
+    padding: 0;
+}
+
+.form-step > form > label {
+    text-transform: uppercase;
+    color: #444444;
+}
+
+.form-step > form > select {
+    background-color: #FAFAFA;
+    border: 1px solid #CCCCCC;
+    padding: 10px;
+    display: block;
+    width: 100%;
+}
+
+.form-step > form > label {
+    display: block;
+    font-weight: 400;
+    margin: 10px 0 0;
+}
+
+.form-step > form > input {
+    display: block;
+    width: 100%;
+    padding: 5px 0;
+    border-bottom: 1px solid #BBBBBB;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    font-size: 16px;
+}
+
+.form-step > form > input[type="checkbox"] {
+    width: 30px;
+    height: 30px;
+}
+
+.form-step > form > input.part-input {
+    float: left;
+    width: 80%;
+}
+
+.form {
+    padding: 0 5px;
+}
+
+textarea {
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    width: 100%;
+}
+
+.button {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    color: #FFFFFF;
+    font-size: 17px;
+    background: #CD1231;
+    padding: 20px 0 20px 0;
+    text-decoration: none;
+    width: 100%;
+    margin: 5px 0 10px 0;
+    display: block;
+    text-align: center;
+}
+
+.button:disabled {
+    background-color: #F4F4F4;
+    color: #333333;
+}
+
+.button:enabled:hover,
+.button:enabled:active,
+.button:enabled:focus {
+    background: #CD1231;
+    background-image: -webkit-linear-gradient(top, #CD1231, #A40E27);
+    background-image: -moz-linear-gradient(top, #CD1231, #A40E27);
+    background-image: -ms-linear-gradient(top, #CD1231, #A40E27);
+    background-image: -o-linear-gradient(top, #CD1231, #A40E27);
+    background-image: linear-gradient(top, #CD1231, #A40E27);
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.button-return {
+    background: #DDDDDD;
+    color: #333333;
+    height: 55px;
+    margin-bottom: 0;
+    padding: 10px 0 10px 0;
+}
+
+.button-return:hover,
+.button-return:active,
+.button-return:focus {
+    background: #DDDDDD;
+    background-image: -webkit-linear-gradient(top, #DDDDDD, #BBBBBB);
+    background-image: -moz-linear-gradient(top, #DDDDDD, #BBBBBB);
+    background-image: -ms-linear-gradient(top, #DDDDDD, #BBBBBB);
+    background-image: -o-linear-gradient(top, #DDDDDD, #BBBBBB);
+    background-image: linear-gradient(top, #DDDDDD, #BBBBBB);
+    text-decoration: none;
+    color: #333333;
+}
+
+.round-button-wrapper {
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.round-button {
+    position: absolute;
+    bottom: 65px;
+    left: 50%;
+    margin: 0 0 0 -40px;
+    z-index: 9999;
+    display:inline-block;
+    width: 80px;
+    height: 80px;
+    line-height: 75px;
+    border: 1px solid #CD1231;
+    border-radius: 50%;
+    color: #FFFFFF;
+    text-align: center;
+    text-decoration: none;
+    background: #CD1231;
+    box-shadow: 0 0 5px gray;
+    font-size: 18px;
+    font-weight: bold;
+    outline: none !important;
+    opacity: 0.3;
+}
+
+.round-button:active,
+.round-button:focus {
+    opacity: 1;
+    outline-color: #CD1231;
+}
+
+.link {
+    font-family: inherit;
+    font-size: inherit;
+    color: #191919;
+    text-align: initial;
+    text-decoration: underline;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.link:focus,
+.link:active {
+    outline: none;
+}
+
+.button-ok {
+    float: right;
+    width: 15%;
+    line-height: 1.1;
+    padding: 8px 0;
+}
+
+.button-action {
+    background-color: #CD1231;
+    color: #FFFFFF;
+    padding: 12px 12px !important;
+}
+
+.button-action:hover,
+.button-action:focus,
+.button-action:active {
+    background-color: #CD1231;
+    color: #FFFFFF;
+}
+
+.button-back {
+    padding: 12px 12px !important;
+}
+
+.btn.button-remove {
+    border-radius: 50%;
+}
+
+.button-lg {
+    padding: 8px 12px !important;
+}
+
+.upper-case-input {
+    text-transform: uppercase;
+}
+
+.required:after {
+    font-weight: bold;
+    color: #CD1231;
+    content: ' *';
+}
+
+.pull-right {
+    float:right;
+}
+
+.use-parts {
+    margin-top: 5px;
+}
+
+.part-list-header {
+    margin-top: 30px;
+    padding-top: 30px;
+}
+
+.ordered-part-list-header {
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.pictures {
+    height: 100px;
+    border: 1px solid #999999;
+    width: 99%;
+    padding: 2px !important;
+    margin-bottom: 8px;
+}
+
+.pictures > div {
+    overflow: auto;
+    white-space: nowrap;
+    padding: 0 !important;
+}
+
+.pictures img {
+    height: 90px;
+    margin: 2px;
+    display: inline-block;
+}
+
+.pictures button {
+    height: 90px;
+    font-size: 26px;
+    font-weight: bold;
+    display: inline-block;
+    margin: 2px 0;
+    padding: 12px 0 !important;
+}
+
+.chosen {
+    background-color: #0033CC;
+}
+
+.group {
+    width: 100%;
+    height: 35px;
+    font-size: 1.2em;
+    margin-bottom:2px;
+    clear: both;
+}
+
+.group .checkbox {
+    padding: 5px 0;
+    border-bottom: 1px solid #BBBBBB;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    float: left;
+    -webkit-transform: scale(2);
+    transform: scale(2);
+    margin-right: 8px;
+    margin-left: 5px;
+}
+
+/* Alert CSS */
+#alert {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    height:0;
+    text-align:center;
+    z-index: 999;
+}
+
+#alert > div {
+    display:inline-block;
+    text-align:center;
+    width:100%;
+    border-radius:2px;
+    font-size:18px;
+}
+
+.alert-info {
+    background-color:#d9edf7;
+    border:3px solid #bce8f1;
+}
+
+.alert-error {
+    background-color:#f0cdcc;
+    border:3px solid #f0bfb8;
+}
+
+.alert-success {
+    background-color:#dff0d8;
+    border:3px solid #d6e9c6;
+}
+
+.create-part-dropdown-wrapper {
+    position:relative;
+}
+
+.create-part-dropdown {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    position:absolute;
+    background-color: #FAFAFA;
+}
+
+.create-part-dropdown > h3 {
+    margin-left: 10px;
+}
