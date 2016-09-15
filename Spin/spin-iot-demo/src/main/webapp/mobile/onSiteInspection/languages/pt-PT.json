@@ -1,0 +1,25 @@
+{
+    "globalLabels": {
+        "confirm": "Confirmar",
+        "next": "Seguinte",
+        "back": "Voltar",
+        "scan": "Ler",
+        "ok": "OK"
+    },
+    "globalErrorMessages": {
+        "unexpectedError": "Ocorreu um erro inesperado, por favor contacte o suporte (support@atomizesoftware.com)."
+    },
+    "errorLabels": {
+        "title": "Erro"
+    },
+    "labels": {
+        "title": "Inspeção no local",
+        "notes": "Notas",
+        "photos": "Fotografias",
+        "done": "Concluir",
+        "cancel": "Cancelar"
+    },
+    "messages": {
+        "unableToSave": "Ocorreu um erro ao tentar guardar a ação por favor tente novamento ou contacte o suporte (support@atomizesoftware.com)."
+    }
+}

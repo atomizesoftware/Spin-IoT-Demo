@@ -87,3 +87,12 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+<<<<<<< HEAD
+sdkres
+spin-sdk.jar
+.Version.json
+
+mqtt
+
+*.cfg
