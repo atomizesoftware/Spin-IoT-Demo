@@ -1,0 +1,95 @@
+<div data-ng-controller="IoTDashboardController">
+  <div class="row-fluid iot-dashboard-container">
+    <div class="span7 widgets-container">
+      <section class="dashboard-widget row-fluid">
+        <div class="span4">
+
+        </div>
+        <div class="span4">
+          <div class="dashboard-widget-label">{{labels.temperatureWidgetLabel | localizedDescription:lang}}</div>
+          <div class="big-number">{{currentTemperature}}&deg;C</div>
+          <div class="last-reading">{{lastReadingTimestamp | date:"yyyy-MM-dd HH:mm:ss"}}</div>
+          <div><button type="button" class="button" data-ng-click="triggerAlarm()">{{labels.triggerAlarm | localizedDescription:lang}}</button></div>
+        </div>
+        <div class="span4">
+          <div class="message" data-ng-show="showAlarmMessage">
+            {{alarmMessage | localizedDescription:lang}}
+            <br>
+            <button type="button" class="link" data-ng-click="closeAlarmMessage()">{{labels.closeMessage | localizedDescription:lang}}</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="dashboard-widget">
+        <div class="dashboard-widget-label">{{labels.sendTextToRaspberry | localizedDescription:lang}}</div>
+        <div class="row-fluid">
+          <div class="span6 sendText">
+            <input type="text" class="row-fluid form-control" maxlength="32" data-ng-model="textToSend">
+            <button type="button" class="button" data-ng-click="sendTextToRaspberry()">{{labels.sendText | localizedDescription:lang}}</button>
+            <div class="message" data-ng-show="showSendTextResultMessage">
+              {{sendTextResultMessage | localizedDescription:lang}}
+              <br>
+              <button type="button" class="link" data-ng-click="closeSendTextResultMessage()">{{labels.closeMessage | localizedDescription:lang}}</button>
+            </div>
+          </div>
+          <div class="span6">
+            <iframe src="http://ipcamlive.com/player/player.php?alias=57d9685794912&mute=1&autoplay=1" width="320px" height="240px"
+            frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="span5 info-container">
+      <div class="div-block-info-container">
+        <div class="background-div">
+          <div class="div-block-solutions info-details iot-form">
+            <img src="/theme/images/nautical_twilight.png" width="65">
+            <div class="forms pod-solutions-text"><span style="letter-spacing: 5px;">SPIN IoT DEMO<br></span>
+              <br>
+              See how Spin connects Things and People, in unified business processes.<br>
+              In this demo we have a <a target="_blank" href="https://www.raspberrypi.org/products/raspberry-pi-3-model-b/">Raspberry Pi 3</a>,
+              with a <a target="_blank" href="https://www.raspberrypi.org/products/sense-hat/">Sense Hat board</a>, connected to Spin.
+              <br><br>In this trial, you will be able to:
+            </div>
+          </div>
+        </div>
+        <div>
+          <ul class="list">
+            <li>
+              <div class="info-details-text">
+                Monitor in real-time the temperature read by the Sense Hat
+              </div>
+            </li>
+            <li>
+              <div>
+                <div class="info-details-text">
+                  Send text to the Raspberry Pi and see it scrolling in the LED display
+                </div>
+              </div>
+            </li>
+            <li>
+              <div>
+                <div class="info-details-text">
+                  When you click "Trigger temperature alarm", two things happen:
+                  <ol>
+                    <li>A Quality Assessment Order is created (click Orders in the main menu to see it)</li>
+                    <li>Receive a work order in the <a target="_blank" href="https://play.google.com/store/apps/details?id=com.atomizesoftware.spin">Spin Android app</a> to perform a on-site inspection</li>
+                  </ol>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="div-block-info-details">
+          <div class="info-details-text">
+            <a href="https://github.com/atomizesoftware/Spin-IoT-Demo">See code of this demo on GitHub</a>
+            <br>
+            <a href="http://docs.atomizesoftware.com/spin/">Spin Documentation</a>
+            <br>
+            <a href="https://atomizesoftware.com/form/developers">Get the Spin SDK</a>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>

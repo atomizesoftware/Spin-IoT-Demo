@@ -1,0 +1,25 @@
+{
+    "globalLabels": {
+        "confirm": "Confirm",
+        "next": "Next",
+        "back": "Back",
+        "scan": "Scan",
+        "ok": "OK"
+    },
+    "globalErrorMessages": {
+        "unexpectedError": "An unexpected error has occurred please contact support (support@atomizesoftware.com)."
+    },
+    "errorLabels": {
+        "title": "Error"
+    },
+    "labels": {
+        "title": "On-site inspection",
+        "notes": "Notes",
+        "photos": "Photos",
+        "done": "Done",
+        "cancel": "Cancel"
+    },
+    "messages": {
+        "unableToSave": "An error occurred while trying to save the action, please try again or contact support (support@atomizesoftware.com)."
+    }
+}
