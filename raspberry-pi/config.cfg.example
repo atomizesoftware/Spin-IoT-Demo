@@ -1,0 +1,5 @@
+[mqtt]
+ host = 192.168.2.59
+ port = 1883
+ username = spin-mqtt-user
+ password = 123456
