@@ -1,7 +1,6 @@
 function IoTDashboardController($scope, $filter, app) {
 
   var init = function() {
-    $scope.lang = app.language();
     $scope.textToSend = "";
     $scope.currentTemperature = "...";
     $scope.lastReadingTimestamp = "...";
@@ -15,7 +14,7 @@ function IoTDashboardController($scope, $filter, app) {
     $scope.labels = {
       temperatureWidgetLabel: {"en-GB":"Current Temperature", "pt-PT":"Temperatura Atual", "fr-FR":"Température Actuelle"},
       sendText: {"en-GB":"Send the text", "pt-PT":"Enviar o texto", "fr-FR":"Envoyer le texte"},
-      triggerAlarm: {"en-GB":"Trigger temperature alarm", "pt-PT":"Activar alarme de temperature", "fr-FR":"Activer l'alarme de température"},
+      triggerAlarm: {"en-GB":"Trigger temperature alarm", "pt-PT":"Activar alarme de temperatura", "fr-FR":"Activer l'alarme de température"},
       sendTextToRaspberry:{"en-GB":"Send text to Raspberry", "pt-PT":"Enviar texto para o Raspberry", "fr-FR":"Envoyer texte à Raspberry"},
       temperatureAlarmSuccess:{
         "en-GB":"Success! A Quality Assessment Order was created and a On-site Inspection request sent to the Android app",
@@ -61,7 +60,7 @@ function IoTDashboardController($scope, $filter, app) {
       }
     }, function(errorResponse){
       console.log(errorResponse);
-    })
+    });
   };
 
 
@@ -78,7 +77,7 @@ function IoTDashboardController($scope, $filter, app) {
       console.log(errorResponse);
       $scope.showAlarmMessage = true;
       $scope.alarmMessage = $scope.labels.temperatureAlarmFailure;
-    })
+    });
   };
 
 
@@ -99,7 +98,7 @@ function IoTDashboardController($scope, $filter, app) {
       console.log(errorResponse);
       $scope.showSendTextResultMessage = true;
       $scope.sendTextResultMessage = $scope.labels.sendTextFailure;
-    })
+    });
   };
 
 
