@@ -96,3 +96,4 @@ spin-sdk.jar
 mqtt
 
 *.cfg
+Spin/spin-iot-demo/build.sbt
