@@ -1,4 +1,4 @@
-function IoTDashboardController($scope, $filter, app) {
+function IoTDashboardController($scope, $filter, $timeout, app, security) {
 
   var init = function() {
     $scope.textToSend = "";
@@ -49,7 +49,6 @@ function IoTDashboardController($scope, $filter, app) {
   $scope.$on('i18nextLanguageChange', function () {
     setLabels();
   });
-
 
   $scope.updateDashboard = function(){
     app.httpGET(app.routes.devices + "?filter=code:raspberryPiTemperatureSensor").then(function(response){
@@ -113,6 +112,22 @@ function IoTDashboardController($scope, $filter, app) {
   to update the dashboard when needed.
   */
   var mqttClient;
+  var noUser = false;
+
+  $scope.$on('userLoggedOut', function(){
+    console.log("disconnecting");
+    noUser = true;
+    mqttClient.disconnect();
+  });
+
+  $scope.$on('userChanged', function(newUser){
+    console.log("userChanged");
+    if(newUser && noUser){
+      noUser = false;
+      connectMQTTClient();
+    }
+  });
+
 
   var onMessageArrived = function(message) {
     var payload = message.payloadString;
@@ -124,12 +139,14 @@ function IoTDashboardController($scope, $filter, app) {
 
 
   var onConnectionLost = function(errorResponse){
-    console.log("Connection lost to Spin MQTT broker with error " + errorResponse);
-    console.log("Will try to reconnect in 10 seconds...");
-    $timeout(function(){
-      console.log("Retrying...");
-      connectMQTTClient();
-    }, 10000);
+    if(!noUser){
+      console.log("Connection lost to Spin MQTT broker with error " + errorResponse);
+      console.log("Will try to reconnect in 10 seconds...");
+      $timeout(function(){
+        console.log("Retrying...");
+        connectMQTTClient();
+      }, 10000);
+    }
   };
 
   var connectMQTTClient = function(){
