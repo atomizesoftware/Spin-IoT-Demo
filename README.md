@@ -15,14 +15,14 @@ This is the code for the demo available at [iot-demo.atomizecloud.com](https://i
 
 Want to login and see it live? Fill out [this form in our website](https://atomizesoftware.com/form/iot-trial).
 
-## What to run this demo in your computer?
+## Want to run this demo in your computer?
 
 ### Tools you will need to install
 
 * A Java runtime: [Oracle](http://www.java.com/) or [OpenJDK](http://openjdk.java.net/), version 1.7 or later
 * [Scala 2.11.8](http://www.scala-lang.org/download/)
 * [SBT 0.13](http://www.scala-sbt.org/download.html)
-* [PostgreSQL 9.4](https://www.postgresql.org/download/)
+* [PostgreSQL 9.4](https://www.postgresql.org/download/) with [Postgis 2.1](http://postgis.net/install/)
 * [Spin SDK](https://atomizesoftware.com/spin/sdk)
 * Spin Android app from the [Play Store](https://play.google.com/store/apps/details?id=com.atomizesoftware.spin)
 * A Raspberry Pi 3 with a Sense Hat board. If you don't have any of these, you can still run the demo, only without receiving temperature values and you not see the text sent to the Raspberry :)
