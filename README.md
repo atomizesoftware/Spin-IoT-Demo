@@ -13,7 +13,7 @@ In this demo you will see Spin connected to a Raspberry Pi 3, as an example how 
 This is the code for the demo available at [iot-demo.atomizecloud.com](https://iot-demo.atomizecloud.com/admin).
 
 
-Want to login and see it live? Fill out [this form in our website](https://atomizesoftware.com/form/iot-trial).
+Want to login and see it live? Fill out [this form in our website](https://atomizesoftware.com/form/iot).
 
 ## Want to run this demo in your computer?
 
