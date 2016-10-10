@@ -25,7 +25,7 @@ Want to login and see it live? Fill out [this form in our website](https://atomi
 * [PostgreSQL 9.4](https://www.postgresql.org/download/) with [Postgis 2.1](http://postgis.net/install/)
 * [Spin SDK](https://atomizesoftware.com/spin/sdk)
 * Spin Android app from the [Play Store](https://play.google.com/store/apps/details?id=com.atomizesoftware.spin)
-* A Raspberry Pi 3 with a Sense Hat board. If you don't have any of these, you can still run the demo, only without receiving temperature values and you not see the text sent to the Raspberry :)
+* A Raspberry Pi 3 with a Sense Hat board. If you don't have any of these, you can still run the demo, only without receiving temperature values and you will not see the text sent to the Raspberry :)
 
 
 ### Setup
