@@ -74,8 +74,7 @@ while True:
       "deviceCode":"raspberryPiTemperatureSensor",
       "userDefinedFields":{{
         "temperature":{{
-          "value":{0},
-          "type":"Number"
+          "value":{0}
         }}
       }}
     }}
