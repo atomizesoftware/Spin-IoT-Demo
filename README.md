@@ -25,12 +25,12 @@ Want to login and see it live? Fill out [this form in our website](https://atomi
 * [PostgreSQL 9.4](https://www.postgresql.org/download/) with [Postgis 2.1](http://postgis.net/install/)
 * [Spin SDK](https://atomizesoftware.com/spin/sdk)
 * Spin Android app from the [Play Store](https://play.google.com/store/apps/details?id=com.atomizesoftware.spin)
-* A Raspberry Pi 3 with a Sense Hat board. If you don't have any of these, you can still run the demo, only without receiving temperature values and you will not see the text sent to the Raspberry :)
+* A Raspberry Pi 3 with a Sense Hat board. If you don't have any of these, you can still run the demo, only without receiving temperature values and you will not see the text sent to the Raspberry
 
 
 ### Setup
 
-* First install all the tools above :)
+* First install all the tools above 
 * Get the code from this Github repository `git clone https://github.com/atomizesoftware/Spin-IoT-Demo.git`
 * Using pgadmin or psql command line utility, create a new database `CREATE DATABASE spin_iot_demo`
 * Unzip the Spin SDK file to some folder in your computer and run `java -jar spin-sdk.jar setup-db`. When asked to `create\update database` say yes, when asked `fill with demo data` say no
