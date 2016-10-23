@@ -17,7 +17,7 @@ import com.atomizesoftware.spin.auth.AuthenticatedUser
 case class SpinIoTDemo(spin: SpinApp) {
 
   //Implicits needed to remove boilerplate code
-  implicit val movementRepository = spin.movementRepository
+  implicit val eventRepository = spin.eventRepository
   implicit val deviceRepository = spin.deviceRepository
   implicit val userDefinedFieldsRepository = spin.userDefinedFieldsRepository
   implicit val orderRepository = spin.orderRepository
@@ -25,18 +25,18 @@ case class SpinIoTDemo(spin: SpinApp) {
   // Needed by json4s to be able to extract values from userDefinedFields
   implicit val formats = DefaultFormats
 
-  def movementManager_beforeInsert(tryOptMovement:Try[Option[Movement]], extraParams:Map[String, Any],
-    session:Session, user:AuthenticatedUser): Try[Option[Movement]] = {
+  def eventManager_beforeInsert(tryOptEvent:Try[Option[Event]], extraParams:Map[String, Any],
+    session:Session, user:AuthenticatedUser): Try[Option[Event]] = {
 
       implicit val currentUser:AuthenticatedUser = user
 
       spin.dataModel.db.withSession { implicit s:Session =>
 
-        val modifiedMovement = for {
-          Some(movement) <- tryOptMovement
+        val modifiedEvent = for {
+          Some(event) <- tryOptEvent
         } yield {
 
-          movement match {
+          event match {
 
             case m if m typeIs "temperatureAlarm" => {
               val qualityAssessmentOrder = Order(
@@ -44,54 +44,54 @@ case class SpinIoTDemo(spin: SpinApp) {
                 number = ""
               )
 
-              val movementToReturn = spin.orderManager.createAndNotify(qualityAssessmentOrder) match {
-                case Success(newOrder) => movement.copy(orderId = newOrder.map(_.id))
+              val eventToReturn = spin.orderManager.createAndNotify(qualityAssessmentOrder) match {
+                case Success(newOrder) => event.copy(orderId = newOrder.map(_.id))
                 case Failure(ex) => throw ex
               }
 
-              // movement is changed before inserting
-              Some(movementToReturn)
+              // event is changed before inserting
+              Some(eventToReturn)
             }
 
-            case _ => Some(movement)
+            case _ => Some(event)
           }
         }
 
-        //return the movement that is going to be saved in the database
-        modifiedMovement
+        //return the event that is going to be saved in the database
+        modifiedEvent
       }
     }
 
 
-  def movementManager_afterInsert(tryOptMovement:Try[Option[Movement]], extraParams:Map[String, Any],
-    session:Session, user:AuthenticatedUser): Try[Option[Movement]] = {
+  def eventManager_afterInsert(tryOptEvent:Try[Option[Event]], extraParams:Map[String, Any],
+    session:Session, user:AuthenticatedUser): Try[Option[Event]] = {
 
         implicit val currentUser:AuthenticatedUser = user
 
         spin.dataModel.db.withSession { implicit s:Session =>
 
-          val modifiedMovement = for {
-            Some(movement) <- tryOptMovement
+          val modifiedEvent = for {
+            Some(event) <- tryOptEvent
           } yield {
 
-            movement match {
+            event match {
 
-              case m if m typeIs "sendTextToRaspberry" => {
-                if(movement.notes.nonEmpty) {
+              case evt if evt typeIs "sendTextToRaspberry" => {
+                if(event.notes.nonEmpty) {
                   spin.deviceManager.publishMqttMessage(
                     topic="to-raspberryPiLedDisplay",
-                    message=movement.notes.get
+                    message=event.notes.get
                   )
                 }
                 //no changes, so return the same
-                Some(movement)
+                Some(event)
               }
 
-              case m if m typeIs "temperatureMeasurement" => {
-                val currentTemperature = (movement.userDefinedFields \ "temperature" \ "value").extract[Number]
+              case evt if evt typeIs "temperatureMeasurement" => {
+                val currentTemperature = (event.userDefinedFields \ "temperature" \ "value").extract[Number]
                 var lastReadingTimestamp = DateTime.now
-                if(movement.device.nonEmpty){
-                  val device = movement.device.get
+                if(event.device.nonEmpty){
+                  val device = event.device.get
                   spin.deviceRepository.updateDevice(device.copy(
                     userDefinedFields = device.withFields(
                       List(
@@ -103,15 +103,15 @@ case class SpinIoTDemo(spin: SpinApp) {
                 }
 
                 //no changes, so return the same
-                Some(movement)
+                Some(event)
               }
 
-              case _ => Some(movement)
+              case _ => Some(event)
             }
           }
 
-          //the movement that is going to be returned by the REST API
-          modifiedMovement
+          //the event that is going to be returned by the REST API
+          modifiedEvent
         }
       }
 
@@ -129,18 +129,18 @@ case class SpinIoTDemo(spin: SpinApp) {
 
             order match {
               case ord if ord typeIs "qualityAssessment" => {
-                val onSiteInspectionMovement = Movement(
-                  movementStatusId = spin.movementManager.statusWithCode("PENDING").map(_.id).getOrElse(0),
-                  movementTypeId = spin.movementManager.typeWithCode("onSiteInspection").map(_.id).getOrElse(0),
+                val onSiteInspectionEvent = Event(
+                  eventStatusId = spin.eventManager.statusWithCode("PENDING").map(_.id).getOrElse(0),
+                  eventTypeId = spin.eventManager.typeWithCode("onSiteInspection").map(_.id).getOrElse(0),
                   createUserId = user.id,
                   assignedUserId = Some(user.id),
                   createDateTime = DateTime.now,
                   orderId = Some(order.id),
-                  invoicingStatusId = spin.movementManager.invoicingStatusWithCode("UNINVOICED").map(_.id).getOrElse(0),
+                  invoicingStatusId = spin.eventManager.invoicingStatusWithCode("UNINVOICED").map(_.id).getOrElse(0),
                   plan = false
                 )
 
-                spin.movementManager.createAndNotify(onSiteInspectionMovement)
+                spin.eventManager.createAndNotify(onSiteInspectionEvent)
 
                 order
               }
