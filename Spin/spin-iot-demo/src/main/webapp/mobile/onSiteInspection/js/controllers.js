@@ -48,26 +48,26 @@ angular.module('onSiteInspection')
     ['$scope', '$translate', '$timeout', 'app', 'userId', 'deviceId',
     function ($scope, $translate, $timeout, app, userId, deviceId) {
 
-    var movementId = app.getQueryString("movementid");
+    var spinEventId = app.getQueryString("spinEventid");
 
     var initController = function() {
         $scope.photos = [];
         $scope.updateLanguage();
 
-        if(movementId){
-            app.httpGET("/movements/" + movementId + "?include=movementstatus,order").then(function(response){
-                $scope.movement = response.data;
+        if(spinEventId){
+            app.httpGET("/spinEvents/" + spinEventId + "?include=spinEventstatus,order").then(function(response){
+                $scope.spinEvent = response.data;
                 app.deviceInterface().hidePageLoader();
-                app.deviceInterface().changePageTitle($scope.movement.order.number + " : " + $scope.labels.Title);
-                app.httpPUT("/movements/" + movementId, angular.toJson($scope.movement)).then(function(response){
-                    console.log("movement locked");
+                app.deviceInterface().changePageTitle($scope.spinEvent.order.number + " : " + $scope.labels.Title);
+                app.httpPUT("/spinEvents/" + spinEventId, angular.toJson($scope.spinEvent)).then(function(response){
+                    console.log("spinEvent locked");
                 }, function(error){
                     console.log(error);
                 });
             });
         } else {
-            $scope.movement = {
-                movementTypeCode:"onSiteInspection"
+            $scope.spinEvent = {
+                spinEventTypeCode:"onSiteInspection"
             };
             app.deviceInterface().changePageTitle($scope.labels.Title);
             app.deviceInterface().hidePageLoader();
@@ -145,18 +145,18 @@ angular.module('onSiteInspection')
         $scope.updateLanguage();
     });
 
-    var saveMovement = function(movement){
-        movement.deviceId = deviceId;
-        app.updateOrder(movement);
-        movement.destinationLocationId = movement.order.originLocationId;
-        movement.createLocationId = movement.order.originLocationId;
+    var saveEvent = function(spinEvent){
+        spinEvent.deviceId = deviceId;
+        app.updateOrder(spinEvent);
+        spinEvent.destinationLocationId = spinEvent.order.originLocationId;
+        spinEvent.createLocationId = spinEvent.order.originLocationId;
 
         var add = false;
-        var nextMovementId = app.deviceInterface().getNextMovementId();
+        var nextEventId = app.deviceInterface().getNextEventId();
 
-        if(!movement.id){
+        if(!spinEvent.id){
             add = true;
-            movement.id = nextMovementId;
+            spinEvent.id = nextEventId;
         }
 
         var documents = [];
@@ -169,25 +169,25 @@ angular.module('onSiteInspection')
                 doc.fileName = $scope.photos[i].fileName;
                 doc.date = new Date();
                 doc.localPath = $scope.photos[i].original;
-                doc.movementId = movement.id;
+                doc.spinEventId = spinEvent.id;
                 documents.push(doc);
             }
         }
 
-        var movements = [];
+        var spinEvents = [];
 
         if(add){
-            movement.createUserId = userId;
-            movement.createDateTime = new Date();
-            movements.push(movement);
-            if(app.deviceInterface().createMovements(JSON.stringify(movements), JSON.stringify(documents))){
+            spinEvent.createUserId = userId;
+            spinEvent.createDateTime = new Date();
+            spinEvents.push(spinEvent);
+            if(app.deviceInterface().createEvents(JSON.stringify(spinEvents), JSON.stringify(documents))){
                 $scope.back();
             } else {
                 alert($scope.errorMessages.UnableToSave);
             }
         } else {
-            app.queueHttpRequest("PUT", "/movements/" + movement.id, movement).then(function(){
-                if (app.deviceInterface().createMovements(JSON.stringify(movements), JSON.stringify(documents))){
+            app.queueHttpRequest("PUT", "/spinEvents/" + spinEvent.id, spinEvent).then(function(){
+                if (app.deviceInterface().createEvents(JSON.stringify(spinEvents), JSON.stringify(documents))){
                     $scope.back();
                 } else {
                     alert($scope.errorMessages.UnableToSave);
@@ -196,19 +196,20 @@ angular.module('onSiteInspection')
         }
     };
 
-    /* Goes back to the movements list. */
+    /* Goes back to the spinEvents list. */
     $scope.back = function() {
       app.backToList(false);
     };
 
-    $scope.done = function(movement){
-        movement.movementStatusCode = "Done";
-        saveMovement(movement);
+    $scope.done = function(spinEvent){
+      console.log("DONE");
+        spinEvent.spinEventStatusCode = "Done";
+        saveEvent(spinEvent);
     };
 
-    $scope.cancel = function(movement){
-        movement.movementStatusCode = "Cancelled";
-        saveMovement(movement);
+    $scope.cancel = function(spinEvent){
+        spinEvent.spinEventStatusCode = "Cancelled";
+        saveEvent(spinEvent);
     };
 
     initController();
@@ -255,7 +256,7 @@ angular.module('onSiteInspection')
         };
     };
 
-    /* Goes back to the movement list. */
+    /* Goes back to the spinEvent list. */
     $scope.back = function() {
         app.backToList(false);
     };

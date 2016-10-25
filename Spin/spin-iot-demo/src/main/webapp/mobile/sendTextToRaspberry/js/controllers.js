@@ -117,26 +117,26 @@ angular.module('sendTextToRaspberry')
     });
 
     $scope.send = function(){
-      var movement = {
-        id:app.deviceInterface().getNextMovementId(),
-        movementTypeCode: "sendTextToRaspberry",
+      var event = {
+        id:app.deviceInterface().getNextEventId(),
+        eventTypeCode: "sendTextToRaspberry",
         deviceCode: "raspberryPiLedDisplay",
         createUserId: userId,
         createDateTime: new Date(),
         notes: $scope.textToSend
       };
 
-      var movements = [];
-      movements.push(movement);
+      var events = [];
+      events.push(event);
 
-      if(app.deviceInterface().createMovements(JSON.stringify(movements))){
+      if(app.deviceInterface().createEvents(JSON.stringify(events))){
         $scope.back();
       } else {
         alert($scope.errorMessages.unexpectedError);
       }
     };
 
-    /* Goes back to the movements list. */
+    /* Goes back to the events list. */
     $scope.back = function() {
       app.backToList(false);
     };
@@ -184,7 +184,7 @@ angular.module('sendTextToRaspberry')
         };
     };
 
-    /* Goes back to the movement list. */
+    /* Goes back to the events list. */
     $scope.back = function() {
         app.backToList(false);
     };

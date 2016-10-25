@@ -110,13 +110,15 @@ textarea {
     border-radius: 0;
     color: #FFFFFF;
     font-size: 17px;
-    background: #CD1231;
+    background: #FF2731;
     padding: 20px 0 20px 0;
     text-decoration: none;
     width: 100%;
     margin: 5px 0 10px 0;
     display: block;
     text-align: center;
+    border: 0;
+    text-transform: uppercase;
 }
 
 .button:disabled {
@@ -124,17 +126,10 @@ textarea {
     color: #333333;
 }
 
-.button:enabled:hover,
-.button:enabled:active,
-.button:enabled:focus {
-    background: #CD1231;
-    background-image: -webkit-linear-gradient(top, #CD1231, #A40E27);
-    background-image: -moz-linear-gradient(top, #CD1231, #A40E27);
-    background-image: -ms-linear-gradient(top, #CD1231, #A40E27);
-    background-image: -o-linear-gradient(top, #CD1231, #A40E27);
-    background-image: linear-gradient(top, #CD1231, #A40E27);
-    text-decoration: none;
-    color: #FFFFFF;
+
+.button-done {
+  background-color: #3EC491 !important;
+  text-transform: uppercase;
 }
 
 .button-return {
@@ -145,18 +140,6 @@ textarea {
     padding: 10px 0 10px 0;
 }
 
-.button-return:hover,
-.button-return:active,
-.button-return:focus {
-    background: #DDDDDD;
-    background-image: -webkit-linear-gradient(top, #DDDDDD, #BBBBBB);
-    background-image: -moz-linear-gradient(top, #DDDDDD, #BBBBBB);
-    background-image: -ms-linear-gradient(top, #DDDDDD, #BBBBBB);
-    background-image: -o-linear-gradient(top, #DDDDDD, #BBBBBB);
-    background-image: linear-gradient(top, #DDDDDD, #BBBBBB);
-    text-decoration: none;
-    color: #333333;
-}
 
 .round-button-wrapper {
     text-align: center;
@@ -175,12 +158,12 @@ textarea {
     width: 80px;
     height: 80px;
     line-height: 75px;
-    border: 1px solid #CD1231;
+    border: 1px solid #FF2731;
     border-radius: 50%;
     color: #FFFFFF;
     text-align: center;
     text-decoration: none;
-    background: #CD1231;
+    background: #FF2731;
     box-shadow: 0 0 5px gray;
     font-size: 18px;
     font-weight: bold;
@@ -191,7 +174,7 @@ textarea {
 .round-button:active,
 .round-button:focus {
     opacity: 1;
-    outline-color: #CD1231;
+    outline-color: #FF2731;
 }
 
 .link {
@@ -218,15 +201,16 @@ textarea {
 }
 
 .button-action {
-    background-color: #CD1231;
-    color: #FFFFFF;
+    background-color: #FFFFFF;
+    color: #FF2731;
     padding: 12px 12px !important;
+    border: 0;
 }
 
 .button-action:hover,
 .button-action:focus,
 .button-action:active {
-    background-color: #CD1231;
+    background-color: #FF2731;
     color: #FFFFFF;
 }
 
@@ -248,7 +232,7 @@ textarea {
 
 .required:after {
     font-weight: bold;
-    color: #CD1231;
+    color: #FF2731;
     content: ' *';
 }
 
@@ -374,4 +358,9 @@ textarea {
 
 .create-part-dropdown > h3 {
     margin-left: 10px;
+}
+
+
+.text-to-raspberry {
+  margin: 20px 0;
 }

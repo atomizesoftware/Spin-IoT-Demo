@@ -64,11 +64,11 @@ function IoTDashboardController($scope, $filter, $timeout, app, security) {
 
 
   $scope.triggerAlarm = function(){
-    var movement = {
-      movementTypeCode: "temperatureAlarm",
+    var event = {
+      eventTypeCode: "temperatureAlarm",
       userDefinedFields: {temperature:{value:$scope.currentTemperature}}
     };
-    app.httpPOST(app.routes.movements, angular.toJson(movement)).then(function(response){
+    app.httpPOST(app.routes.events, angular.toJson(event)).then(function(response){
       console.log(response);
       $scope.showAlarmMessage = true;
       $scope.alarmMessage = $scope.labels.temperatureAlarmSuccess;
@@ -87,8 +87,8 @@ function IoTDashboardController($scope, $filter, $timeout, app, security) {
 
 
   $scope.sendTextToRaspberry = function(){
-    var movement = {movementTypeCode: "sendTextToRaspberry", deviceCode: "raspberryPiLedDisplay", notes: $scope.textToSend};
-    app.httpPOST(app.routes.movements, angular.toJson(movement)).then(function(response){
+    var event = {eventTypeCode: "sendTextToRaspberry", deviceCode: "raspberryPiLedDisplay", notes: $scope.textToSend};
+    app.httpPOST(app.routes.events, angular.toJson(event)).then(function(response){
       console.log(response);
       $scope.showSendTextResultMessage = true;
       $scope.sendTextResultMessage = $scope.labels.sendTextSuccess;
@@ -132,7 +132,7 @@ function IoTDashboardController($scope, $filter, $timeout, app, security) {
   var onMessageArrived = function(message) {
     var payload = message.payloadString;
     var payloadArray = payload.split("\n");
-    if(payloadArray[0].indexOf("POST /api/sync-movements") !== -1){
+    if(payloadArray[0].indexOf("POST /api/sync-events") !== -1){
       $scope.updateDashboard();
     }
   };
