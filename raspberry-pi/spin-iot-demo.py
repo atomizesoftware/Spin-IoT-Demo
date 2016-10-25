@@ -65,12 +65,10 @@ while True:
     
     msg = "{0}".format(t)
 
-    #sense.show_message(msg)
-
-    payload = "POST /movements\r\n\r\n"
+    payload = "POST /events\r\n\r\n"
     payload = payload + """
     {{
-      "movementTypeCode":"temperatureMeasurement",
+      "eventTypeCode":"temperatureMeasurement",
       "deviceCode":"raspberryPiTemperatureSensor",
       "userDefinedFields":{{
         "temperature":{{

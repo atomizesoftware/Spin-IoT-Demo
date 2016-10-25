@@ -1,7 +1,7 @@
 <section class="no-margin form-step">
     <form class="form content">
         <label for="notes">{{labels.Notes}}</label>
-        <textarea rows="4" id="notes" name="notes" data-ng-model="movement.notes"></textarea>
+        <textarea rows="4" id="notes" name="notes" data-ng-model="spinEvent.notes"></textarea>
         <label class="control-label">{{labels.Photos}}</label>
         <div class="pictures col-xs-12">
             <div class="col-xs-9 col-sm-10 col-md-11">
@@ -10,12 +10,9 @@
             <button class="button-action btn-action-inverted pull-right col-xs-3 col-sm-2 col-md-1"
                     data-ng-click="takePhoto(photos)"><i class="fa fa-camera fa-lg fa-2x"></i></button>
         </div>
-        <button class="button" data-ng-class="{chosen: movement.movementStatus.code == 'Done'}"
-            data-ng-click="done(movement)">{{labels.Done}}</button>
-        <button class="button" data-ng-class="{chosen: movement.movementStatus.code == 'Cancelled'}"
-            data-ng-click="cancel(movement)">{{labels.Cancel}}</button>
+        <button class="button button-done" data-ng-class="{chosen: spinEvent.spinEventStatus.code == 'Done'}"
+            data-ng-click="done(spinEvent)">{{labels.Done}}</button>
+        <button class="button" data-ng-class="{chosen: spinEvent.spinEventStatus.code == 'Cancelled'}"
+            data-ng-click="cancel(spinEvent)">{{labels.Cancel}}</button>
     </form>
-    <div class="fixed-buttons">
-        <button class="btn button-lg button-back" data-ng-click="back()">{{globalLabels.Back}}</button>
-    </div>
 </section>
