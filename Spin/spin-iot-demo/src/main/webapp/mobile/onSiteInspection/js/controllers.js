@@ -48,19 +48,19 @@ angular.module('onSiteInspection')
     ['$scope', '$translate', '$timeout', 'app', 'userId', 'deviceId',
     function ($scope, $translate, $timeout, app, userId, deviceId) {
 
-    var spinEventId = app.getQueryString("spinEventid");
+    var spinEventId = app.getQueryString("eventid");
 
     var initController = function() {
         $scope.photos = [];
         $scope.updateLanguage();
 
         if(spinEventId){
-            app.httpGET("/spinEvents/" + spinEventId + "?include=spinEventstatus,order").then(function(response){
+            app.httpGET("/events/" + spinEventId + "?include=eventstatus,order").then(function(response){
                 $scope.spinEvent = response.data;
                 app.deviceInterface().hidePageLoader();
                 app.deviceInterface().changePageTitle($scope.spinEvent.order.number + " : " + $scope.labels.Title);
-                app.httpPUT("/spinEvents/" + spinEventId, angular.toJson($scope.spinEvent)).then(function(response){
-                    console.log("spinEvent locked");
+                app.httpPUT("/events/" + spinEventId, angular.toJson($scope.spinEvent)).then(function(response){
+                    console.log("event locked");
                 }, function(error){
                     console.log(error);
                 });
@@ -186,7 +186,9 @@ angular.module('onSiteInspection')
                 alert($scope.errorMessages.UnableToSave);
             }
         } else {
-            app.queueHttpRequest("PUT", "/spinEvents/" + spinEvent.id, spinEvent).then(function(){
+            console.log("SPIN EVENT");
+            console.log(angular.toJson(spinEvent));
+            app.queueHttpRequest("PUT", "/events/" + spinEvent.id, spinEvent).then(function(){
                 if (app.deviceInterface().createEvents(JSON.stringify(spinEvents), JSON.stringify(documents))){
                     $scope.back();
                 } else {
@@ -203,12 +205,14 @@ angular.module('onSiteInspection')
 
     $scope.done = function(spinEvent){
       console.log("DONE");
-        spinEvent.spinEventStatusCode = "Done";
+        delete spinEvent.eventStatusId;
+        spinEvent.eventStatusCode = "Done";
         saveEvent(spinEvent);
     };
 
     $scope.cancel = function(spinEvent){
-        spinEvent.spinEventStatusCode = "Cancelled";
+        delete spinEvenet.eventStatusId;
+        spinEvent.eventStatusCode = "Cancelled";
         saveEvent(spinEvent);
     };
 
