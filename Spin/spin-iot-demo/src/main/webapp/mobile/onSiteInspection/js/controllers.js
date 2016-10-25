@@ -211,7 +211,7 @@ angular.module('onSiteInspection')
     };
 
     $scope.cancel = function(spinEvent){
-        delete spinEvenet.eventStatusId;
+        delete spinEvent.eventStatusId;
         spinEvent.eventStatusCode = "Cancelled";
         saveEvent(spinEvent);
     };
