@@ -169,7 +169,7 @@ angular.module('onSiteInspection')
                 doc.fileName = $scope.photos[i].fileName;
                 doc.date = new Date();
                 doc.localPath = $scope.photos[i].original;
-                doc.spinEventId = spinEvent.id;
+                doc.eventId = spinEvent.id;
                 documents.push(doc);
             }
         }
