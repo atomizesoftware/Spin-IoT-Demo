@@ -1,9 +1,13 @@
 function IoTDashboardController($scope, $filter, $timeout, app, security) {
+  var mqttClient;
+  var userIsLogged;
 
   var init = function() {
     $scope.textToSend = "";
     $scope.currentTemperature = "...";
     $scope.lastReadingTimestamp = "...";
+
+    userIsLogged = security.isAuthenticated();
 
     setLabels();
     connectMQTTClient();
@@ -51,15 +55,17 @@ function IoTDashboardController($scope, $filter, $timeout, app, security) {
   });
 
   $scope.updateDashboard = function(){
-    app.httpGET(app.routes.devices + "?filter=code:raspberryPiTemperatureSensor").then(function(response){
-      if(response.data.results && response.data.results.length > 0){
-        var sensor = response.data.results[0];
-        $scope.currentTemperature = sensor.userDefinedFields.currentTemperature.value;
-        $scope.lastReadingTimestamp=sensor.userDefinedFields.lastReadingTimestamp.value;
-      }
-    }, function(errorResponse){
-      console.log(errorResponse);
-    });
+    if(userIsLogged) {
+      app.httpGET(app.routes.devices + "?filter=code:raspberryPiTemperatureSensor").then(function(response){
+        if(response.data.results && response.data.results.length > 0){
+          var sensor = response.data.results[0];
+          $scope.currentTemperature = sensor.userDefinedFields.currentTemperature.value;
+          $scope.lastReadingTimestamp=sensor.userDefinedFields.lastReadingTimestamp.value;
+        }
+      }, function(errorResponse){
+        console.log(errorResponse);
+      });
+    }
   };
 
 
@@ -111,19 +117,17 @@ function IoTDashboardController($scope, $filter, $timeout, app, security) {
   Creates an mqtt client connected to the Spin backend,
   to update the dashboard when needed.
   */
-  var mqttClient;
-  var noUser = false;
 
   $scope.$on('userLoggedOut', function(){
     console.log("disconnecting");
-    noUser = true;
+    userIsLogged = false;
     mqttClient.disconnect();
   });
 
   $scope.$on('userChanged', function(newUser){
     console.log("userChanged");
-    if(newUser && noUser){
-      noUser = false;
+    if(newUser){
+      userIsLogged = true;
       connectMQTTClient();
     }
   });
