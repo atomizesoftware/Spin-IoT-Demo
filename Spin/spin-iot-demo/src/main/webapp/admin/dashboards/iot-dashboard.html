@@ -1,7 +1,7 @@
 <div data-ng-controller="IoTDashboardController">
   <div class="row-fluid iot-dashboard-container">
     <div class="span7 widgets-container">
-      <section class="dashboard-widget row-fluid">
+      <section class="dashboard-widget dashboard-widget-temperature row-fluid">
         <div class="span4">
 
         </div>
@@ -20,7 +20,7 @@
         </div>
       </section>
 
-      <section class="dashboard-widget">
+      <section class="dashboard-widget dashboard-widget-video row-fluid">
         <div class="dashboard-widget-label">{{labels.sendTextToRaspberry | localizedDescription:lang}}</div>
         <div class="row-fluid">
           <div class="span6 sendText">
@@ -40,7 +40,7 @@
       </section>
     </div>
     <div class="span5 info-container">
-      <div class="div-block-info-container">
+      <div class="div-block-info-container dashboard-widget">
         <div class="background-div">
           <div class="div-block-solutions info-details iot-form">
             <img src="/theme/images/nautical_twilight.png" width="65">
@@ -54,31 +54,21 @@
           </div>
         </div>
         <div>
-          <ul class="list">
+          <ol class="list">
             <li>
-              <div class="info-details-text">
                 Monitor in real-time the temperature read by the Sense Hat
-              </div>
             </li>
             <li>
-              <div>
-                <div class="info-details-text">
-                  Send text to the Raspberry Pi and see it scrolling in the LED display
-                </div>
-              </div>
+              Send text to the Raspberry Pi and see it scrolling in the LED display
             </li>
             <li>
-              <div>
-                <div class="info-details-text">
-                  When you click "Trigger temperature alarm", two things happen:
-                  <ol>
-                    <li>A Quality Assessment Order is created (click Orders in the main menu to see it)</li>
-                    <li>Receive a work order in the <a target="_blank" href="https://play.google.com/store/apps/details?id=com.atomizesoftware.spin">Spin Android app</a> to perform a on-site inspection</li>
-                  </ol>
-                </div>
-              </div>
+              When you click "Trigger temperature alarm", two things happen:
+              <ol>
+                <li>A Quality Assessment Order is created (click Orders in the main menu to see it)</li>
+                <li>Receive a work order in the <a target="_blank" href="https://play.google.com/store/apps/details?id=com.atomizesoftware.spin">Spin Android app</a> to perform a on-site inspection</li>
+              </ol>
             </li>
-          </ul>
+          </ol>
         </div>
         <div class="div-block-info-details">
           <div class="info-details-text">
@@ -91,5 +81,4 @@
         </div>
     </div>
   </div>
-  <div class="clearfix"></div>
 </div>
