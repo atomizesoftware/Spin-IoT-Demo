@@ -143,7 +143,7 @@ function IoTDashboardController($scope, $filter, $timeout, app, security) {
 
 
   var onConnectionLost = function(errorResponse){
-    if(!noUser){
+    if(userIsLogged){
       console.log("Connection lost to Spin MQTT broker with error " + errorResponse);
       console.log("Will try to reconnect in 10 seconds...");
       $timeout(function(){
