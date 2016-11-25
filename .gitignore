@@ -97,3 +97,4 @@ mqtt
 
 *.cfg
 Spin/spin-iot-demo/build.sbt
+/Spin/deploy-counter.txt
