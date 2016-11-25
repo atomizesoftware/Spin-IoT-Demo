@@ -5,7 +5,7 @@ In this demo you will see Spin connected to a Raspberry Pi 3, as an example how 
 ## Features
 
 * Web dashboard shows temperature sent by the Raspberry Pi
-* Clicking the button "Trigger a temperature alarm" will create an Order (how Spin calls a process or case) of type `Quality Assessment`. That order will automatically contain the `Temperature Alarm` movement (how Spin calls both events and actions) that was created when the button was clicked, and will automatically create an `On-site inspection` movement assigned to you. The Spin Android app will receive the pending movement, you can open it, write notes, take photos and close it
+* Clicking the button "Trigger a temperature alarm" will create an Order (how Spin calls a process or case) of type `Quality Assessment`. That order will automatically contain the `Temperature Alarm` event that was created when the button was clicked, and will automatically create an `On-site inspection` event with status `Pending` assigned to you. The Spin Android app will receive the pending event, you can open it, write notes, take photos and close it
 * Send text to display in the LED display of the Raspberry Pi. You can use the dashboard to send it and see it in the live video (be patient, the video has a delay of around 20 seconds)
 * You can also send text to the Raspberry from the Android app, in the Actions tab
 
